@@ -18,15 +18,14 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: process.env.FRONTEND_URL,
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     optionSuccessStatus: 200,
-//   })
-// );
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    optionSuccessStatus: 200,
+  })
+);
 
 //Importing & Using Routes
 import user from "./routes/userRoutes.js";
@@ -37,7 +36,7 @@ app.use("/api/v1", blog);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
 
