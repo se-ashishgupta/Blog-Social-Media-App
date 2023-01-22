@@ -65,6 +65,7 @@ const Account = () => {
               ownerId={blog.owner._id}
               isAccount={true}
               isDelete={true}
+              createdAt={blog.createdAt}
             />
           ))
         ) : (

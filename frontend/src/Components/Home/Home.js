@@ -43,6 +43,7 @@ const Home = () => {
               ownerImage={blog.owner.avatar.url}
               ownerName={blog.owner.name}
               ownerId={blog.owner._id}
+              createdAt={blog.createdAt}
             />
           ))
         ) : (

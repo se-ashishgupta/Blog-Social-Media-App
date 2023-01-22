@@ -11,13 +11,12 @@ const Blog = ({
   blogId,
   caption,
   blogImage,
-  likes = [],
-  comments = [],
   ownerImage,
   ownerName,
   ownerId,
   isDelete = false,
   isAccount = false,
+  createdAt,
 }) => {
   const [captionValue, setCaptionValue] = useState(caption);
   const [captionToggle, setCaptionToggle] = useState(false);
@@ -69,6 +68,13 @@ const Blog = ({
             <DeleteOutline />
           </Button>
         ) : null}
+        <Typography
+          fontWeight={100}
+          color="rgba(0,0,0,0.582)"
+          style={{ alignSelf: "center" }}
+        >
+          {createdAt}
+        </Typography>
       </div>
 
       <Dialog
