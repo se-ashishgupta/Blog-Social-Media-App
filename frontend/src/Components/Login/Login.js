@@ -5,7 +5,6 @@ import { Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../../src/Action/userAction";
 import { useAlert } from "react-alert";
-import Loader from "../Loader/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,9 +27,7 @@ const Login = () => {
     }
   }, [error, dispatch, alert]);
 
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <div className="login">
       <form className="loginForm" onSubmit={loginHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
