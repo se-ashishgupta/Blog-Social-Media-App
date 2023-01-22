@@ -32,7 +32,6 @@ app.use("/api/v1", blog);
 
 export default app;
 
-// Path: backend\routes\userRoutes.js
 app.get("/", (req, res) =>
   res.send(
     `<h1>Site is Working. click <a href=${process.env.FRONTEND_URL}>here</a> to visit frontend.</h1>`
