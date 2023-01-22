@@ -272,7 +272,7 @@ export const getMyBlogs = async (req, res, next) => {
     const blogs = [];
 
     for (let i = 0; i < user.blogs.length; i++) {
-      const blog = await Blog.findById(user.blogs[i]).populate("owner ");
+      const blog = await Blog.findById(user.blogs[i]).populate("owner");
       blogs.push(blog);
     }
 
