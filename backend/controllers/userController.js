@@ -201,8 +201,6 @@ export const deleteMyProfile = async (req, res, next) => {
     const user = await User.findById(req.user._id);
     const blogs = user.blogs;
     const userId = user._id;
-    const followers = user.followers;
-    const following = user.following;
 
     //Removing Avatar from cloudinary
     await cloundinary.v2.uploader.destroy(user.avatar.public_id);
@@ -214,21 +212,6 @@ export const deleteMyProfile = async (req, res, next) => {
       expires: new Date(Date.now()),
       httpOnly: true,
     });
-
-    //Remove the user from the follwer's following
-    for (let i = 0; i < followers.length; i++) {
-      const follower = await User.findById(followers[i]);
-      const index = follower.following.indexOf(userId);
-      follower.following.splice(index, 1);
-      await follower.save();
-    }
-    //Remove the user from the following's  follower
-    for (let i = 0; i < following.length; i++) {
-      const follows = await User.findById(following[i]);
-      const index = follows.followers.indexOf(userId);
-      follows.followers.splice(index, 1);
-      await follows.save();
-    }
 
     //Delete all the blogs of the user
     for (let i = 0; i < blogs.length; i++) {
