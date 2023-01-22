@@ -1,6 +1,5 @@
 import axios from "axios";
 import { server } from "../store";
-
 export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch({

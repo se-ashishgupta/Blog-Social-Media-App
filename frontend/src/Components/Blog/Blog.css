@@ -10,14 +10,21 @@
 .blogHeader {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1vmax;
 }
-.blogHeader > button {
+.blogHeader > div > button {
   border-radius: 100%;
-  color: rgba(0, 0, 0, 0.582);
+  color: rgba(0, 0, 0, 0.767);
+  transition: all 0.3s;
+}
+.blogHeader > div > button:hover {
+  transform: translateY(-4px);
 }
 
+.blogHeader > div > button > svg {
+  font-size: 1.7vmax;
+}
 .blog > img {
   width: 100%;
 }
@@ -33,25 +40,14 @@
   margin: 1vmax;
 }
 
-.blogFooter > button {
-  color: rgba(0, 0, 0, 0.767);
-  margin: 0 1vmax;
-  border-radius: 100%;
-  transition: all 0.3s;
-}
-
-.blogFooter > button:hover {
-  transform: translateY(-4px);
-}
-
-.blogFooter > button > svg {
-  font-size: 1.7vmax;
-}
-
 .DialogBox {
   min-width: 500px;
   height: 100vh;
   padding: 2vmax;
+}
+.DialogBox .updateHeading {
+  font-size: 2rem;
+  text-align: center;
 }
 .captionForm {
   display: flex;
@@ -64,6 +60,7 @@
   border: 1px solid rgba(0, 0, 0, 0.288);
   border-radius: 30px 0 0 30px;
   font: 100 1vmax "Roboto", sans-serif;
+  font-size: 1rem;
 }
 .captionForm > button {
   border-radius: 0%;
@@ -81,5 +78,35 @@
 
   .blogFooter > button > svg {
     font-size: 8vw;
+  }
+  .DialogBox {
+    min-width: 300px;
+    height: 100vh;
+    padding: 1vmax;
+  }
+  .DialogBox .updateHeading {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .blog {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.068);
+    padding: 0 0 4vw;
+    margin: 0;
+  }
+
+  .blogFooter > button > svg {
+    font-size: 8vw;
+  }
+  .DialogBox {
+    min-width: 200px;
+    height: 100vh;
+    padding: 1vmax;
+  }
+  .DialogBox .updateHeading {
+    font-size: 1rem;
   }
 }

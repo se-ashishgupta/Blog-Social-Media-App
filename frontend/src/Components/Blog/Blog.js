@@ -18,6 +18,9 @@ const Blog = ({
   isAccount = false,
   createdAt,
 }) => {
+  const pDate = new Date(createdAt);
+  const stringPostDate = pDate.toLocaleString();
+
   const [captionValue, setCaptionValue] = useState(caption);
   const [captionToggle, setCaptionToggle] = useState(false);
 
@@ -37,52 +40,49 @@ const Blog = ({
   return (
     <div className="blog">
       <div className="blogHeader">
-        {isAccount ? (
-          <Button onClick={() => setCaptionToggle(!captionToggle)}>
-            <MoreVert />
-          </Button>
-        ) : null}
+        <div className="blogDetails">
+          <Avatar
+            src={ownerImage}
+            alt="User"
+            sx={{ height: "3vmax", width: "3vmax" }}
+          />
+          <Link to={`/user/${ownerId}`}>
+            <Typography fontWeight={700}>{ownerName}</Typography>
+          </Link>
+        </div>
+
+        <div>
+          {isAccount ? (
+            <Button onClick={() => setCaptionToggle(!captionToggle)}>
+              Update <MoreVert />
+            </Button>
+          ) : null}
+          {isDelete ? (
+            <Button onClick={deleteBlogHandler}>
+              <DeleteOutline />
+            </Button>
+          ) : null}
+        </div>
       </div>
       <img src={blogImage} alt="Blog" />
-      <div className="blogDetails">
-        <Avatar
-          rec={ownerImage}
-          alt="User"
-          sx={{ height: "3vmax", width: "3vmax" }}
-        />
-        <Link to={`/user/${ownerId}`}>
-          <Typography fontWeight={700}>{ownerName}</Typography>
-        </Link>
-
-        <Typography
-          fontWeight={100}
-          color="rgba(0,0,0,0.582)"
-          style={{ alignSelf: "center" }}
-        >
-          {caption}
-        </Typography>
-      </div>
-      <div className="blogFooter">
-        {isDelete ? (
-          <Button onClick={deleteBlogHandler}>
-            <DeleteOutline />
-          </Button>
-        ) : null}
-        <Typography
-          fontWeight={100}
-          color="rgba(0,0,0,0.582)"
-          style={{ alignSelf: "center" }}
-        >
-          {createdAt}
-        </Typography>
-      </div>
+      <Typography fontWeight={300} style={{ alignSelf: "center" }}>
+        Posted On:: {stringPostDate}
+      </Typography>
+      <Typography
+        fontWeight={100}
+        color="rgba(0,0,0,0.582)"
+        style={{ alignSelf: "center" }}
+      >
+        {caption}
+      </Typography>
+      <div className="blogFooter"></div>
 
       <Dialog
         open={captionToggle}
         onClose={() => setCaptionToggle(!captionToggle)}
       >
         <div className="DialogBox">
-          <Typography variant="h4">Update Caption</Typography>
+          <Typography className="updateHeading">Update Caption</Typography>
           <form className="captionForm" onSubmit={updateCaptionHandler}>
             <input
               type="text"
