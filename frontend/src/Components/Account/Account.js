@@ -9,12 +9,13 @@ import {
 import Loader from "../Loader/Loader";
 import { Avatar, Button, Typography } from "@mui/material";
 import Blog from "../Blog/Blog";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 
 const Account = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const naviagte = useNavigate();
 
   const { user, loading: userLoading } = useSelector((state) => state.user);
 
@@ -25,6 +26,7 @@ const Account = () => {
   const logoutHandler = async () => {
     await dispatch(logoutUser());
     alert.success("Logged out successfully");
+    naviagte("/");
   };
 
   const deleteProfileHandler = async () => {
