@@ -102,7 +102,7 @@ export const updateCaption = async (req, res, next) => {
 
 export const getAllBlogs = async (req, res, next) => {
   try {
-    const blogs = await Blog.find().populate("owner likes comments.user");
+    const blogs = await Blog.find().populate("owner ");
     res.status(200).json({
       success: true,
       blogs: blogs.reverse(),

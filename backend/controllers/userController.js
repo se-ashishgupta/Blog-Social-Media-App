@@ -60,7 +60,7 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email })
       .select("+password")
-      .populate("blogs following followers");
+      .populate("blogs ");
     if (!user) {
       return res.status(400).json({
         success: false,
@@ -272,9 +272,7 @@ export const getMyBlogs = async (req, res, next) => {
     const blogs = [];
 
     for (let i = 0; i < user.blogs.length; i++) {
-      const blog = await Blog.findById(user.blogs[i]).populate(
-        "owner likes comments.user"
-      );
+      const blog = await Blog.findById(user.blogs[i]).populate("owner ");
       blogs.push(blog);
     }
 
