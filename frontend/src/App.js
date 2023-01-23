@@ -12,6 +12,7 @@ import Register from "./Components/Register/Register";
 import UpdateProfile from "./Components/UpdateProfile/UpdateProfile";
 import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
 import NotFound from "./Components/NotFound/NotFound";
+import MyBlogs from "./Components/MyBlogs/MyBlogs";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,10 @@ function App() {
       {isAuthenticated ? <Header /> : null}
       <Routes>
         <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route
+          path="/myblogs"
+          element={isAuthenticated ? <MyBlogs /> : <Login />}
+        />
         <Route
           path="/account"
           element={isAuthenticated ? <Account /> : <Login />}

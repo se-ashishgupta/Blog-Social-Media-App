@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
-import "./Home.css";
-import Blog from "../Blog/Blog";
-import { getFallowingBlogs } from "../../Action/userAction";
-import Loader from "../Loader/Loader";
-import { useDispatch, useSelector } from "react-redux";
+import "./MyBlogs.css";
+import { useSelector, useDispatch } from "react-redux";
 import { Typography } from "@mui/material";
+import Blog from "../Blog/Blog";
 import { useAlert } from "react-alert";
+import { getMyBlogs } from "../../Action/userAction";
+import Loader from "../Loader/Loader";
 
-const Home = () => {
-  console.log(process.env.REACT_APP_SERVER_API);
+const MyBlogs = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { loading, blogs, error } = useSelector(
-    (state) => state.blogOfFollowing
+  const { loading: userLoading } = useSelector((state) => state.user);
+  const { loading, blogs, error, message } = useSelector(
+    (state) => state.myBlogs
   );
 
   useEffect(() => {
-    dispatch(getFallowingBlogs());
+    dispatch(getMyBlogs());
   }, [dispatch]);
 
   useEffect(() => {
@@ -25,13 +25,17 @@ const Home = () => {
       alert.error(error);
       dispatch({ type: "clearErrors" });
     }
-  }, [error, dispatch, alert]);
+    if (message) {
+      alert.success(message);
+      dispatch({ type: "clearMessage" });
+    }
+  }, [error, dispatch, message, alert]);
 
-  return loading ? (
+  return loading || userLoading ? (
     <Loader />
   ) : (
-    <div className="home">
-      <div className="homeleft">
+    <div className="myBlogs">
+      <div className="myBlogsContent">
         {blogs && blogs.length > 0 ? (
           blogs.map((blog) => (
             <Blog
@@ -44,6 +48,8 @@ const Home = () => {
               ownerImage={blog.owner.avatar.url}
               ownerName={blog.owner.name}
               ownerId={blog.owner._id}
+              isAccount={true}
+              isDelete={true}
               createdAt={blog.createdAt}
             />
           ))
@@ -55,4 +61,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MyBlogs;

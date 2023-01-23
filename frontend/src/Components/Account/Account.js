@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
 import "./Account.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteMyProfile,
-  getMyBlogs,
-  logoutUser,
-} from "../../Action/userAction";
+import { deleteMyProfile, loadUser, logoutUser } from "../../Action/userAction";
 import Loader from "../Loader/Loader";
 import { Avatar, Button, Typography } from "@mui/material";
-import Blog from "../Blog/Blog";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 
@@ -33,8 +28,9 @@ const Account = () => {
     await dispatch(deleteMyProfile());
     dispatch(logoutUser());
   };
+
   useEffect(() => {
-    dispatch(getMyBlogs());
+    dispatch(loadUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -52,39 +48,17 @@ const Account = () => {
     <Loader />
   ) : (
     <div className="account">
-      <div className="accountleft">
-        {blogs && blogs.length > 0 ? (
-          blogs.map((blog) => (
-            <Blog
-              key={blog._id}
-              blogId={blog._id}
-              caption={blog.caption}
-              blogImage={blog.image.url}
-              likes={blog.likes}
-              comments={blog.comments}
-              ownerImage={blog.owner.avatar.url}
-              ownerName={blog.owner.name}
-              ownerId={blog.owner._id}
-              isAccount={true}
-              isDelete={true}
-              createdAt={blog.createdAt}
-            />
-          ))
-        ) : (
-          <Typography variant="h6"> No Blogs Yet</Typography>
-        )}
-      </div>
       <div className="accountright">
         <Avatar
           src={user.avatar.url}
-          sx={{ height: "8vmax", width: "8vmax" }}
+          sx={{ height: "10vmax", width: "10vmax" }}
         />
 
         <Typography variant="h5">{user.name}</Typography>
 
         <div>
           <Typography>Blogs</Typography>
-          <Typography></Typography>
+          <Typography>{blogs && blogs.length}</Typography>
         </div>
 
         <Button variant="contained" onClick={logoutHandler}>

@@ -26,9 +26,9 @@ const Blog = ({
 
   const dispatch = useDispatch();
 
-  const updateCaptionHandler = (e) => {
+  const updateCaptionHandler = async (e) => {
     e.preventDefault();
-    dispatch(updateBlog(captionValue, blogId));
+    await dispatch(updateBlog(captionValue, blogId));
     dispatch(getMyBlogs());
   };
 
@@ -44,38 +44,44 @@ const Blog = ({
           <Avatar
             src={ownerImage}
             alt="User"
-            sx={{ height: "3vmax", width: "3vmax" }}
+            sx={{ height: "4vmax", width: "4vmax" }}
           />
-          <Link to={`/user/${ownerId}`}>
-            <Typography fontWeight={700}>{ownerName}</Typography>
-          </Link>
+          <div>
+            <Link to={`/user/${ownerId}`}>
+              <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
+                {ownerName}
+              </Typography>
+            </Link>
+            <Typography fontWeight={300} sx={{ fontSize: "1.2vmax" }}>
+              {stringPostDate}
+            </Typography>
+          </div>
         </div>
 
         <div>
           {isAccount ? (
             <Button onClick={() => setCaptionToggle(!captionToggle)}>
-              Update <MoreVert />
+              <MoreVert sx={{ fontSize: "2vmax" }} />
             </Button>
           ) : null}
           {isDelete ? (
             <Button onClick={deleteBlogHandler}>
-              <DeleteOutline />
+              <DeleteOutline sx={{ fontSize: "2vmax" }} />
             </Button>
           ) : null}
         </div>
       </div>
       <img src={blogImage} alt="Blog" />
-      <Typography fontWeight={300} style={{ alignSelf: "center" }}>
-        Posted On:: {stringPostDate}
-      </Typography>
-      <Typography
-        fontWeight={100}
-        color="rgba(0,0,0,0.582)"
-        style={{ alignSelf: "center" }}
-      >
-        {caption}
-      </Typography>
-      <div className="blogFooter"></div>
+
+      <div className="blogFooter">
+        <Typography
+          fontWeight={300}
+          color="rgba(0,0,0,0.582)"
+          style={{ alignSelf: "center" }}
+        >
+          {caption}
+        </Typography>
+      </div>
 
       <Dialog
         open={captionToggle}

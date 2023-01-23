@@ -1,27 +1,17 @@
 .account {
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 350px;
-  height: 92vh;
+  height: 100vh;
 }
 
-.accountleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2vmax;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
 .accountright {
+  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
 
 .accountright img:hover {
@@ -68,15 +58,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .account {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  .accountleft {
-    padding: 0;
-    min-height: 90vh;
-  }
-
   .accountright > a {
     font: 100 1rem "Roboto";
     margin-top: 6vw;

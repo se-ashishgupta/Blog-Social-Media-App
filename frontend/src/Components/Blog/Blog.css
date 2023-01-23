@@ -13,31 +13,32 @@
   justify-content: space-between;
   padding: 1vmax;
 }
+
 .blogHeader > div > button {
   border-radius: 100%;
   color: rgba(0, 0, 0, 0.767);
   transition: all 0.3s;
 }
 .blogHeader > div > button:hover {
-  transform: translateY(-4px);
-}
-
-.blogHeader > div > button > svg {
-  font-size: 1.7vmax;
-}
-.blog > img {
-  width: 100%;
+  transform: translateY(-2px);
 }
 
 .blogDetails {
   display: flex;
-  padding: 1vmax;
+  align-items: center;
+  padding: 0.5vmax;
 }
 
-.blogDetails > a {
+.blogDetails > div {
+  margin-left: 1vmax;
+}
+.blogDetails > div > a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  margin: 1vmax;
+}
+.blog > img {
+  width: 100%;
+  border-radius: 0.5vmax;
 }
 
 .DialogBox {
@@ -73,12 +74,9 @@
     box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.068);
     padding: 0 0 4vw;
-    margin: 0;
+    margin: 0vmax;
   }
 
-  .blogFooter > button > svg {
-    font-size: 8vw;
-  }
   .DialogBox {
     min-width: 300px;
     height: 100vh;
@@ -89,18 +87,6 @@
   }
 }
 @media screen and (max-width: 375px) {
-  .blog {
-    width: 100%;
-    border-radius: 0;
-    box-shadow: none;
-    border: 1px solid rgba(0, 0, 0, 0.068);
-    padding: 0 0 4vw;
-    margin: 0;
-  }
-
-  .blogFooter > button > svg {
-    font-size: 8vw;
-  }
   .DialogBox {
     min-width: 200px;
     height: 100vh;

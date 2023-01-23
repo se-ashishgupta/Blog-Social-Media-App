@@ -18,5 +18,6 @@ root.render(
       <App />
     </AlertProvider>
   </Provider>
+
   // </React.StrictMode>
 );

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import {
   Home,
   HomeOutlined,
-  Add,
-  AddOutlined,
-  Search,
-  SearchOutlined,
+  AddCircle,
+  AddCircleOutline,
   AccountCircle,
   AccountCircleOutlined,
+  CollectionsBookmark,
+  CollectionsBookmarkOutlined,
 } from "@mui/icons-material";
 
 const Header = () => {
@@ -21,16 +21,18 @@ const Header = () => {
       </Link>
       <Link to="/newblog" onClick={() => setTab("/newblog")}>
         {tab === "/newblog" ? (
-          <Add style={{ color: "black" }} />
+          <>
+            <AddCircle style={{ color: "black" }} />
+          </>
         ) : (
-          <AddOutlined />
+          <AddCircleOutline />
         )}
       </Link>
-      <Link to="/search" onClick={() => setTab("/search")}>
-        {tab === "/search" ? (
-          <Search style={{ color: "black" }} />
+      <Link to="/myblogs" onClick={() => setTab("/myblogs")}>
+        {tab === "/myblogs" ? (
+          <CollectionsBookmark style={{ color: "black" }} />
         ) : (
-          <SearchOutlined />
+          <CollectionsBookmarkOutlined />
         )}
       </Link>
       <Link to="/account" onClick={() => setTab("/account")}>
