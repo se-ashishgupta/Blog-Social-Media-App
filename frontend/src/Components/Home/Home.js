@@ -8,7 +8,6 @@ import { Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 
 const Home = () => {
-  console.log(process.env.REACT_APP_SERVER_API);
   const dispatch = useDispatch();
   const alert = useAlert();
 

@@ -52,6 +52,7 @@ function App() {
           path="/update/password"
           element={isAuthenticated ? <UpdatePassword /> : <Login />}
         />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

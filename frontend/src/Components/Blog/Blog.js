@@ -1,7 +1,6 @@
 import { DeleteOutline, MoreVert } from "@mui/icons-material";
 import { Avatar, Button, Dialog, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Blog.css";
 import { useDispatch } from "react-redux";
 import { updateBlog, deleteBlog } from "../../Action/blogAction";
@@ -47,11 +46,10 @@ const Blog = ({
             sx={{ height: "4vmax", width: "4vmax" }}
           />
           <div>
-            <Link to={`/user/${ownerId}`}>
-              <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
-                {ownerName}
-              </Typography>
-            </Link>
+            <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
+              {ownerName}
+            </Typography>
+
             <Typography fontWeight={300} sx={{ fontSize: "1.2vmax" }}>
               {stringPostDate}
             </Typography>
