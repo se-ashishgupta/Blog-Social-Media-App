@@ -47,11 +47,11 @@ const Blog = ({
             sx={{ height: "4vmax", width: "4vmax" }}
           />
           <div>
-            <Link to={`/user/${ownerId}`}>
+            
               <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
                 {ownerName}
               </Typography>
-            </Link>
+            
             <Typography fontWeight={300} sx={{ fontSize: "1.2vmax" }}>
               {stringPostDate}
             </Typography>
