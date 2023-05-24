@@ -17,7 +17,7 @@ import MyBlogs from "./Components/MyBlogs/MyBlogs";
 function App() {
   const dispatch = useDispatch();
 
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(loadUser());

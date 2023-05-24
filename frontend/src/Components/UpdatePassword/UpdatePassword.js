@@ -69,7 +69,7 @@ const UpdatePassword = () => {
         />
 
         <Button disabled={loading} type="submit">
-          Login
+          Change Password
         </Button>
       </form>
     </div>

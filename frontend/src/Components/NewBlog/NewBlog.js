@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createNewblog } from "../../Action/blogAction";
 import { loadUser } from "../../Action/userAction";
 import { useAlert } from "react-alert";
+import Loader from "../Loader/Loader";
 
 const NewBlog = () => {
   const [image, setImage] = useState(null);
@@ -43,7 +44,9 @@ const NewBlog = () => {
     }
   }, [error, dispatch, message, alert]);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="newBlog">
       <form className="newBlogForm" onSubmit={submitHandler}>
         <Typography variant="h3">New Blog</Typography>

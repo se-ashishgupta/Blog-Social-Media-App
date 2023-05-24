@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { registerUser } from "../../Action/userAction";
 import "./Register.css";
 import { useAlert } from "react-alert";
+import Loader from "../Loader/Loader";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -40,7 +41,9 @@ const Register = () => {
     }
   }, [error, dispatch, alert]);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="register">
       <form className="registerForm" onSubmit={submitHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
