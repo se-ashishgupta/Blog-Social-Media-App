@@ -46,18 +46,10 @@ const Blog = ({
             sx={{ height: "4vmax", width: "4vmax" }}
           />
           <div>
-<<<<<<< HEAD
             <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
               {ownerName}
             </Typography>
 
-=======
-            
-              <Typography fontWeight={700} sx={{ fontSize: "1.4vmax" }}>
-                {ownerName}
-              </Typography>
-            
->>>>>>> c3c5895b60b7716f463d06ae656d2e61b038084d
             <Typography fontWeight={300} sx={{ fontSize: "1.2vmax" }}>
               {stringPostDate}
             </Typography>
