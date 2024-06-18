@@ -36,6 +36,7 @@ export const register = async (req, res, next) => {
       },
     });
     const token = await user.generateToken();
+
     const option = {
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: true,
